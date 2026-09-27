@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#1769d2" />
+  <meta name="description" content="DompetKu — aplikasi keuangan pribadi" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <link rel="stylesheet" href="style.css" />
+  <title>DompetKu</title>
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="topbar-title"><p class="eyebrow">Keuangan pribadi</p><h1 id="pageTitle">Dashboard</h1></div>
+      <div class="top-actions"><button class="icon-btn" id="notifyBtn" aria-label="Notifikasi">🔔</button></div>
+    </header>
+    <main id="content" class="content"></main>
+    <button id="addBtn" class="add-main" aria-label="Tambah transaksi">＋</button>
+    <nav class="bottom-nav" aria-label="Navigasi utama">
+      <button data-route="home" class="nav-item active"><span>⌂</span><small>Home</small></button>
+      <button data-route="monthly" class="nav-item"><span>▣</span><small>Perbulan</small></button>
+      <button data-route="expenses" class="nav-item"><span>↘</span><small>Pengeluaran</small></button>
+      <button data-route="savings" class="nav-item"><span>▤</span><small>Tabungan</small></button>
+      <button data-route="settings" class="nav-item"><span>⚙</span><small>Pengaturan</small></button>
+    </nav>
+  </div>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-sheet">
+      <div class="modal-head"><h2 id="modalTitle">Tambah</h2><button id="closeModal" class="icon-btn modal-close">✕</button></div>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <div id="lockScreen" class="lock-screen hidden" role="dialog" aria-modal="true" aria-labelledby="lockTitle">
+    <div class="lock-card">
+      <div class="lock-logo">Rp</div>
+      <p class="eyebrow dark">DompetKu</p>
+      <h2 id="lockTitle">Masukkan PIN</h2>
+      <p class="section-note">Aplikasi dikunci untuk melindungi data keuangan di perangkat ini.</p>
+      <input id="lockPin" class="lock-input" inputmode="numeric" maxlength="6" type="password" autocomplete="one-time-code" placeholder="••••" />
+      <p id="lockError" class="lock-error" aria-live="polite"></p>
+      <button id="unlockBtn" class="primary">Buka DompetKu</button>
+    </div>
+  </div>
+  <script src="app.js"></script>
+  <script>if('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');</script>
+</body>
+</html>
